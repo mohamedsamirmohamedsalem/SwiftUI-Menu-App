@@ -1,20 +1,19 @@
 //
-//  Menu.swift
-//  iDine
+//  ContentView.swift
+//  MenuApp
 //
-//  Created by Paul Hudson on 27/06/2019.
-//  Copyright © 2019 Hacking with Swift. All rights reserved.
+//  Created by Mohamed Samir on 25/07/2022.
 //
 
 import SwiftUI
 
-struct MenuSection: Codable {
+struct MenuSection: Codable , Identifiable{
     var id: UUID
     var name: String
     var items: [MenuItem]
 }
 
-struct MenuItem: Codable, Equatable {
+struct MenuItem: Codable, Equatable , Identifiable{
     var id: UUID
     var name: String
     var photoCredit: String

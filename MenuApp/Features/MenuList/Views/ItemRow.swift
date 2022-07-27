@@ -8,13 +8,34 @@
 import SwiftUI
 
 struct ItemRow: View {
+    var item : MenuItem
+    let colors : [String:Color] = ["D":.purple,"G":.black,"N":.red,"S":.blue,"V":.green]
+    
     var body: some View {
-        Text(/*@START_MENU_TOKEN@*/"Hello, World!"/*@END_MENU_TOKEN@*/)
+        HStack {
+            Image(item.thumbnailImage)
+            VStack(alignment: .leading){
+                Text(item.name)
+                Text("$\(item.price)")
+            }
+            Spacer()
+            ForEach(item.restrictions,id: \.self){ restriction in
+                Text(restriction)
+                    .font(.caption)
+                    .fontWeight(.black)
+                    .padding(5)
+                    .background(colors[restriction])
+                    .foregroundColor(.white)
+                    .clipShape(Circle())
+                
+                                            
+            }
+        }
     }
 }
 
 struct ItemRow_Previews: PreviewProvider {
     static var previews: some View {
-        ItemRow()
+        ItemRow(item: MenuItem.example)
     }
 }
